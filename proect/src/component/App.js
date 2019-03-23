@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import AppHeader from './AppHeader/AppHeader';
-import Modal from './Model/Model';
+import MenuPage from '../pages/Menu';
+import MenuItemPage from '../pages/MenuItem';
+import AboutPage from '../pages/About';
+import ContactPage from '../pages/Contact';
+import DeliveryPage from '../pages/Delivery';
+import AccountPage from '../pages/Account';
+import OrderHistoryPage from '../pages/OrderHistory';
+import PlannerPage from '../pages/Planer';
 
-export default class App extends Component {
-  state = { isModalOpen: false };
+import routes from '../configs/routes';
 
-  openModal = () => {
-    this.setState({ isModalOpen: true });
-  };
+const App = () => (
+  <div>
+    <AppHeader />
+    <Switch>
+      <Route exact path={routes.MENU} component={MenuPage} />
+      <Route path={routes.MENU_ITEM} component={MenuItemPage} />
+      <Route path={routes.ABOUT} component={AboutPage} />
+      <Route path={routes.CONTACT} component={ContactPage} />
+      <Route path={routes.DELIVERY} component={DeliveryPage} />
+      <Route path={routes.ACCOUNT} component={AccountPage} />
+      <Route path={routes.ORDER_HISTORY} component={OrderHistoryPage} />
+      <Route path={routes.PLANNER} component={PlannerPage} />
+    </Switch>
+  </div>
+);
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  };
-
-  render() {
-    const { isModalOpen } = this.state;
-    return (
-      <div>
-        <AppHeader />
-        <button type="button" onClick={this.openModal}>
-          Open Modal
-        </button>
-        {isModalOpen && <Modal onClose={this.closeModal} />}
-      </div>
-    );
-  }
-}
+export default App;

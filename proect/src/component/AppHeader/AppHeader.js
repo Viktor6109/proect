@@ -1,12 +1,14 @@
 import React from 'react';
+
 import Logo from '../Logo/Logo';
 import Navigatiom from '../Navigation/Navigation';
-import UserMenu from '../UserMenu/UserMenu';
-import appLogo from '../../img/logo.png';
-import s from './AppHeader.module.css';
-import avatar from '../../img/avatar.jpg';
+import UserMenu from '../../modules/user/UserMenu/UserMenu';
 
-const navItems = ['menu', 'about', 'contact', 'deliver'];
+import appLogo from './assets/logo.png';
+import avatar from './assets/avatar.jpg';
+import navItems from '../../configs/main-nav';
+
+import s from './AppHeader.module.css';
 
 const AppHeader = () => (
   <header className={s.header}>
